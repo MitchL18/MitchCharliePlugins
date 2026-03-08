@@ -20,35 +20,59 @@ import mitch.test.bs.section4.Test_AA_2_00;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+/**
+ * TestSuite00 is a JUnit test suite that aggregates all test cases
+ * used to validate the Blackjack Basic Strategy implementation.
+ *
+ * <p>This suite runs tests covering multiple categories:
+ * <ul>
+ *     <li>Invalid hand conditions</li>
+ *     <li>Section 1 strategy rules</li>
+ *     <li>Section 2 strategy rules</li>
+ *     <li>Section 3 strategy rules</li>
+ *     <li>Section 4 strategy rules</li>
+ * </ul>
+ *
+ * <p>Running this suite executes all included test classes in sequence,
+ * allowing the entire strategy implementation to be verified at once.
+ *
+ * @author Mitch
+ */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+
+        // Invalid input tests
         Test6CardHand.class,
         TestBlackJackHand.class,
         TestBustedHand.class,
         TestNullCard.class,
         TestNullHand.class,
 
+        // Section 1 tests
         Test_12_2_00.class,
         Test_12_6_00.class,
         Test_12_7_00.class,
         Test_20_A_00.class,
 
+        // Section 2 tests
         Test_8_6_00.class,
         Test_8_A_00.class,
         Test_11_2_00.class,
         Test_11_7_00.class,
 
+        // Section 3 tests
         Test_A2_7_00.class,
         Test_A7_6_00.class,
         Test_A8_A_00.class,
         Test_A9_2_00.class,
 
+        // Section 4 tests
         Test_22_6_00.class,
         Test_22_A_00.class,
         Test_1010_A_00.class,
         Test_AA_2_00.class
 })
 
-
 public class TestSuite00 {
+
 }
