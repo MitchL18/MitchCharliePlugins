@@ -127,7 +127,6 @@ public class BasicStrategy {
      */
     protected Play doSection1(Hand hand, Card upCard) {
         int value = hand.getValue();
-        System.out.println("VALLLLLLUUUUUEWE: " + value);
 
         // Section 1 now supports all hands
         if(value < 12 || value > 21)
@@ -138,7 +137,6 @@ public class BasicStrategy {
         // Subtract 21 since the player's hand starts at 21 and we're working
         // our way down through section 1 from index 0.
         int rowIndex = 21 - value;
-        System.out.println("THE ROW IS: " + rowIndex);
         Play[] row = section1Rules[rowIndex];
 
         // TODO: Complete getting the column in the table.
@@ -155,7 +153,7 @@ public class BasicStrategy {
 
         // At this row, col we should have the correct play defined.
         Play play = row[colIndex];
-        System.out.println("THE COL INDEX IS: " + colIndex);
+
         return play;
     }
 
