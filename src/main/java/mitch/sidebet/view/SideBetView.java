@@ -70,7 +70,7 @@ public class SideBetView implements ISideBetView {
     protected AMoneyManager moneyManager;
 
     // Corresponding chips equal to the stake
-    public final static int PLACE_HOME_X = X + AtStakeSprite.DIAMETER - 12;
+    public final static int PLACE_HOME_X = X + AtStakeSprite.DIAMETER - 13;
     public final static int PLACE_HOME_Y = Y - 20;
     protected Random ran = new Random();
     protected List<Chip> chips = new ArrayList<>();
@@ -170,6 +170,8 @@ public class SideBetView implements ISideBetView {
      */
     @Override
     public void starting() {
+        // clear old side bet outcome text
+        outcomeText = "";
     }
 
     /**
@@ -217,11 +219,30 @@ public class SideBetView implements ISideBetView {
         }
 
         // Renders Win or Lose Over Side Bet
-        if (!outcomeText.isEmpty()) {
+        if (!outcomeText.isEmpty() && !chips.isEmpty()) {
             g.setFont(font);
+
+            Chip firstChip = chips.get(0);
+
+            java.awt.FontMetrics fm = g.getFontMetrics(font);
+            int w = fm.charsWidth(outcomeText.toCharArray(), 0, outcomeText.length());
+            int h = fm.getHeight();
+
+            // Center on first chip
+            int chipCenterX = firstChip.getX() + firstChip.getWidth() / 2;
+            int chipCenterY = firstChip.getY() + firstChip.getHeight() / 2;
+
+            // Text position centered on first chip
+            int textX = (chipCenterX - w / 2) + 5;
+            int textY = chipCenterY + h / 4;
+
+            // Draw background snug
             g.setColor(outcomeBGColor);
+            g.fillRoundRect(textX, textY - h + 5, w, h, 5, 5);
+
+            // Draw text
             g.setColor(outcomeTextColor);
-            g.drawString(outcomeText, X - 20, Y - 40);
+            g.drawString(outcomeText, textX, textY);
         }
     }
 }
