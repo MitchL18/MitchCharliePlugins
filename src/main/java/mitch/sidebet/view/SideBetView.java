@@ -112,18 +112,18 @@ public class SideBetView implements ISideBetView {
                 // Add chip to list of chips.
                 int n = chips.size();
 
+                // Figure out where chips need to go.
                 int placeX = PLACE_HOME_X + n * 35 / 3 + ran.nextInt(10) - 10;
                 int placeY = PLACE_HOME_Y + ran.nextInt(5) - 5;
 
                 Chip chip = new Chip(button.getImage(), placeX, placeY, amt);
                 chips.add(chip);
 
-
-
                 LOG.info("A. side bet amount "+button.getAmt()+" updated new amt = "+amt);
             }
         }
 
+        // clear the side bet amount
         if(oldAmt == amt) {
             amt = 0;
             chips.clear();
@@ -236,7 +236,7 @@ public class SideBetView implements ISideBetView {
             int textX = (chipCenterX - w / 2) + 5;
             int textY = chipCenterY + h / 4;
 
-            // Draw background snug
+            // Draw background
             g.setColor(outcomeBGColor);
             g.fillRoundRect(textX, textY - h + 5, w, h, 5, 5);
 
